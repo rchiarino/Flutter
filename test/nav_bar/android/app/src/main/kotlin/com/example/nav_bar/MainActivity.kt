@@ -1,4 +1,4 @@
-package com.example.widget_test
+package com.example.nav_bar
 
 import io.flutter.embedding.android.FlutterActivity
 
