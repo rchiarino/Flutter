@@ -1,50 +1,101 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
-import 'scan.dart';
-import 'generate.dart';
+import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
+import 'package:barcode_scan/barcode_scan.dart';
+import 'package:qr_scanner/global/const.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: MyApp(),
-    debugShowCheckedModeBanner: false,
-  ));
-}
+void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
-  _MyAppState createState() => _MyAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+    );
+  }
 }
 
-class _MyAppState extends State<MyApp> {
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+  final String title;
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int currentIndex;
+  String qrCodeResult;
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = 0;
+  }
+
+  void changePage(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("QR and Bar Code Reader & Generator demo"),
+      floatingActionButton: FloatingActionButton(
+        //qr scann
+        onPressed: () async {
+                ScanResult codeSanner = await BarcodeScanner.scan(
+                  options: ScanOptions(
+                    useCamera: -1,
+                  ),
+                ); //barcode scnner
+                setState(() {
+                  qrCodeResult = codeSanner.rawContent;
+                });
+              },
+        child: Icon(Icons.qr_code_rounded),
+        backgroundColor: rPrimary,
       ),
-      body: ListView(
-        children: <Widget>[
-          Card(
-            child: ListTile(
-              title: Text("Scan Code"),
-              leading: Icon(MaterialCommunityIcons.qrcode_scan),
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => ScanPage()));
-              },
-            ),
-          ),
-          Card(
-            child: ListTile(
-              title: Text("Generate QR Code"),
-              leading: Icon(MaterialCommunityIcons.qrcode_edit),
-
-              onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => GeneratePage()));
-              },
-            ),
-          ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      bottomNavigationBar: BubbleBottomBar(
+        hasNotch: true,
+        fabLocation: BubbleBottomBarFabLocation.end,
+        opacity: .2,
+        currentIndex: currentIndex,
+        onTap: changePage,
+        borderRadius: BorderRadius.vertical(
+            top: Radius.circular(
+                16)), //border radius doesn't work when the notch is enabled.
+        elevation: 8,
+        items: <BubbleBottomBarItem>[
+          //Home
+          BubbleBottomBarItem(
+              icon: Icon(
+                Icons.dashboard_rounded,
+                color: Colors.black,
+              ),
+              activeIcon: Icon(
+                Icons.dashboard_rounded,
+                color: Colors.blueAccent,
+              ),
+              backgroundColor: Colors.blueAccent,
+              title: Text("Inicio")),
+          
+          //Previews Scans    
+          BubbleBottomBarItem(
+              icon: Icon(
+                Icons.history_rounded,
+                color: Colors.black,
+              ),
+              activeIcon: Icon(
+                Icons.history_rounded,
+                color: Colors.blueAccent,
+              ),
+              backgroundColor: Colors.blueAccent,
+              title: Text("Logs")),
         ],
       ),
     );
