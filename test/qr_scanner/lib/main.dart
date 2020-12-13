@@ -27,8 +27,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int currentIndex;
   String qrCodeResult;
 
-
-
   @override
   void initState() {
     super.initState();
@@ -44,18 +42,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //QR SCANNER
       floatingActionButton: FloatingActionButton(
-        //qr scann
         onPressed: () async {
-                ScanResult codeSanner = await BarcodeScanner.scan(
-                  options: ScanOptions(
-                    useCamera: -1,
-                  ),
-                ); //barcode scnner
-                setState(() {
-                  qrCodeResult = codeSanner.rawContent;
-                });
-              },
+          ScanResult codeSanner = await BarcodeScanner.scan(
+            options: ScanOptions(
+              useCamera: -1,
+            ),
+          ); //barcode scnner
+          setState(() {
+            qrCodeResult = codeSanner.rawContent;
+            debugPrint(qrCodeResult);
+          });
+        },
         child: Icon(Icons.qr_code_rounded),
         backgroundColor: rPrimary,
       ),
@@ -70,6 +69,8 @@ class _MyHomePageState extends State<MyHomePage> {
             top: Radius.circular(
                 16)), //border radius doesn't work when the notch is enabled.
         elevation: 8,
+
+        //Menu
         items: <BubbleBottomBarItem>[
           //Home
           BubbleBottomBarItem(
@@ -83,8 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               backgroundColor: Colors.blueAccent,
               title: Text("Inicio")),
-          
-          //Previews Scans    
+
+          //Previews Scans
           BubbleBottomBarItem(
               icon: Icon(
                 Icons.history_rounded,
