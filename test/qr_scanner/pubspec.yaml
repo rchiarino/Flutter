@@ -32,6 +32,10 @@ dependencies:
   path_provider:
   flutter_vector_icons:
   bubble_bottom_bar: ^1.2.0
+  animated_qr_code_scanner:
+    git:
+      url: https://github.com/kiatuki/animated_qr_code_scanner.git
+      ref: v0.1.7
 dev_dependencies:
   flutter_test:
     sdk: flutter

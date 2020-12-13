@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+
+//NAV
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
+
+//QR
 import 'package:barcode_scan/barcode_scan.dart';
+
+//Custom Pages
 import 'package:qr_scanner/global/const.dart';
+import 'package:qr_scanner/pages/history.dart';
+import 'package:qr_scanner/pages/home.dart';
+
+
 
 void main() => runApp(MyApp());
 
@@ -17,8 +27,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  MyHomePage();
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -36,8 +45,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void changePage(int index) {
     setState(() {
       currentIndex = index;
+      debugPrint(currentIndex.toString());
     });
   }
+
+  var pages = [
+    Home(),
+    Log(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -80,9 +95,9 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               activeIcon: Icon(
                 Icons.dashboard_rounded,
-                color: Colors.blueAccent,
+                color: rPrimary,
               ),
-              backgroundColor: Colors.blueAccent,
+              backgroundColor: rPrimary,
               title: Text("Inicio")),
 
           //Previews Scans
@@ -93,12 +108,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               activeIcon: Icon(
                 Icons.history_rounded,
-                color: Colors.blueAccent,
+                color: rPrimary,
               ),
-              backgroundColor: Colors.blueAccent,
+              backgroundColor: rPrimary,
               title: Text("Logs")),
         ],
       ),
+
+      //Change the main body
+      body: pages[currentIndex],
     );
   }
 }
