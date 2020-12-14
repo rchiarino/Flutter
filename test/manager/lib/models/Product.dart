@@ -13,7 +13,6 @@ class Product {
     this.description,
   });
 
-  // It create an Category from JSON
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
       id: json["id"],

@@ -6,6 +6,7 @@ import "package:google_fonts/google_fonts.dart";
 //NAV
 import 'package:bubble_bottom_bar/bubble_bottom_bar.dart';
 
+import './screens/history/histoy.dart';
 //QR
 import 'package:barcode_scan/barcode_scan.dart';
 
@@ -64,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   var pages = [
     HomeScreen(),
-    HomeScreen()
+    History(),
   ];
 
   @override

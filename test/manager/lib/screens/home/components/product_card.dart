@@ -35,7 +35,7 @@ class ProductCard extends StatelessWidget {
                 child: Hero(
                   tag: product.id,
                   child: FadeInImage.assetNetwork(
-                    placeholder: "assets/spinner.gif",
+                    placeholder: "assets/loader.gif",
                     image: product.image,
                     fit: BoxFit.cover,
                   ),
