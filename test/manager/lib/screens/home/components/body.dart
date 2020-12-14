@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:manager/components/title_text.dart';
-import 'package:manager/services/fetchCategories.dart';
-import 'package:manager/services/fetchProducts.dart';
+import 'package:manager/services/categories.dart';
+import 'package:manager/services/products.dart';
 import 'package:manager/size_config.dart';
 
 import 'categories.dart';
@@ -20,7 +20,7 @@ class Body extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(defaultSize * 2), //20
               child: TitleText(
-                title: "Browse by Categories",
+                title: "Categorias",
               ),
             ),
             FutureBuilder(
@@ -32,7 +32,7 @@ class Body extends StatelessWidget {
             Divider(height: 5),
             Padding(
               padding: EdgeInsets.all(defaultSize * 2), //20
-              child: TitleText(title: "Recommands For You"),
+              child: TitleText(title: "Todo"),
             ),
             // Right Now product is our demo product
             FutureBuilder(

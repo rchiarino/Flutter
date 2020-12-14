@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:manager/constants.dart';
 import 'package:manager/models/Product.dart';
 import 'package:manager/size_config.dart';
@@ -14,7 +13,7 @@ class DetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      backgroundColor: kSecondaryColor,
+      backgroundColor: rDeselect,
       appBar: buildAppBar(context),
       body: Body(product: product),
     );
@@ -23,18 +22,11 @@ class DetailsScreen extends StatelessWidget {
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
       leading: IconButton(
-        icon: SvgPicture.asset("assets/icons/arrow-long-left.svg"),
+        icon: Icon(Icons.arrow_back_ios_rounded, color: Colors.black),
         onPressed: () {
           Navigator.pop(context);
         },
       ),
-      actions: <Widget>[
-        IconButton(
-          icon: SvgPicture.asset("assets/icons/bag.svg"),
-          onPressed: () {},
-        ),
-        SizedBox(width: SizeConfig.defaultSize),
-      ],
     );
   }
 }

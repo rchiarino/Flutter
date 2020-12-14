@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 // Fetch our Categories from API
 Future<List<Category>> fetchCategories() async {
   const String apiUrl =
-      "https://5f210aa9daa42f001666535e.mockapi.io/api/categories";
+      "https://5fd78a589dd0db0017ee9669.mockapi.io/api/palms/category";
 
   final response = await http.get(apiUrl);
 

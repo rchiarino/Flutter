@@ -16,7 +16,7 @@ class ProductInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double defaultSize = SizeConfig.defaultSize;
-    TextStyle lightTextStyle = TextStyle(color: kTextColor.withOpacity(0.6));
+    TextStyle lightTextStyle = TextStyle(color: rText.withOpacity(0.6));
     return Container(
       padding: EdgeInsets.symmetric(horizontal: defaultSize * 2),
       height: defaultSize * 37.5, //375
@@ -40,7 +40,7 @@ class ProductInfo extends StatelessWidget {
               ),
             ),
             SizedBox(height: defaultSize * 2),
-            Text("Form", style: lightTextStyle),
+            Text("Precio:", style: lightTextStyle),
             Text(
               "\$${product.price}",
               style: TextStyle(
@@ -50,22 +50,11 @@ class ProductInfo extends StatelessWidget {
               ),
             ),
             SizedBox(height: defaultSize * 2), //20
-            Text("Available Colors", style: lightTextStyle),
+            Text("Medidas:", style: lightTextStyle),
             Row(
               children: <Widget>[
-                buildColorBox(
-                  defaultSize,
-                  color: Color(0xFF7BA275),
-                  isActive: true,
-                ),
-                buildColorBox(
-                  defaultSize,
-                  color: Color(0xFFD7D7D7),
-                ),
-                buildColorBox(
-                  defaultSize,
-                  color: kTextColor,
-                ),
+                Text("${product.size}"),
+                
               ],
             ),
           ],
@@ -74,19 +63,5 @@ class ProductInfo extends StatelessWidget {
     );
   }
 
-  Container buildColorBox(double defaultSize,
-      {Color color, bool isActive = false}) {
-    return Container(
-      margin: EdgeInsets.only(top: defaultSize, right: defaultSize),
-      // For  fixed value we can use cont for better performance
-      padding: const EdgeInsets.all(5),
-      height: defaultSize * 2.4,
-      width: defaultSize * 2.4,
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(6),
-      ),
-      child: isActive ? SvgPicture.asset("assets/icons/check.svg") : SizedBox(),
-    );
-  }
+  
 }

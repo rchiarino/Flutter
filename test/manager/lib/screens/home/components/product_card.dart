@@ -23,7 +23,7 @@ class ProductCard extends StatelessWidget {
       child: Container(
         width: defaultSize * 14.5, //145
         decoration: BoxDecoration(
-          color: kSecondaryColor,
+          color: rDeselect,
           borderRadius: BorderRadius.circular(30),
         ),
         child: AspectRatio(

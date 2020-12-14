@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:manager/components/title_text.dart';
+// import 'package:manager/components/title_text.dart';
 import 'package:manager/models/Categories.dart';
 
 import '../../../constants.dart';
@@ -33,20 +33,7 @@ class CategoryCard extends StatelessWidget {
                   aspectRatio: 1.025,
                   child: Container(
                     padding: EdgeInsets.all(defaultSize * 2),
-                    color: kSecondaryColor,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        TitleText(title: category.title),
-                        SizedBox(height: defaultSize),
-                        Text(
-                          "${category.numOfProducts}+ Products",
-                          style: TextStyle(
-                            color: kTextColor.withOpacity(0.6),
-                          ),
-                        )
-                      ],
-                    ),
+                    color: rDeselect,
                   ),
                 ),
               ),
@@ -57,7 +44,7 @@ class CategoryCard extends StatelessWidget {
                 child: AspectRatio(
                   aspectRatio: 1.15,
                   child: FadeInImage.assetNetwork(
-                    placeholder: "assets/spinner.gif",
+                    placeholder: "assets/loading-gif-png-4.gif",
                     image: category.image,
                   ),
                 ),

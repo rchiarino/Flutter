@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 // Fetch our Products from API
 Future<List<Product>> fetchProducts() async {
   const String apiUrl =
-      "https://5f210aa9daa42f001666535e.mockapi.io/api/products";
+      "https://5fd78a589dd0db0017ee9669.mockapi.io/api/palms/plants";
 
   final response = await http.get(apiUrl);
 

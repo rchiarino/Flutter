@@ -1,6 +1,6 @@
 class Product {
   final int price;
-  final String id, title, category, image, subTitle, description;
+  final String id, title, category, image, subTitle, description, size;
 
   Product({
     this.id,
@@ -9,6 +9,7 @@ class Product {
     this.category,
     this.image,
     this.subTitle,
+    this.size,
     this.description,
   });
 
@@ -22,20 +23,7 @@ class Product {
       category: json["category"],
       subTitle: json["subTitle"],
       description: json["description"],
+      size: json["size"],
     );
   }
 }
-
-// Our Demo Product
-Product product = Product(
-  id: "1",
-  price: 1600,
-  title: "Wood Frame",
-  image: "https://i.imgur.com/sI4GvE6.png",
-  category: "Chair",
-  subTitle: "Tieton Armchair",
-  description: description,
-);
-
-String description =
-    "This armchair is an elegant and functional piece of furniture. It is suitable for family visits and parties with friends and perfect for relaxing in front of the TV after hard work.";
